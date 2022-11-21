@@ -44,12 +44,12 @@ class ExpenseController extends Controller
         }
         if ($product) {
             return response()->json([
-                'message' => 'Product Added successfully',
+                'message' => 'Expenses Added successfully',
                 'code' => 200
 
             ]);
         } else {
-            return response()->json(['message' => 'Product Not Added', 'code' => 404], 404);
+            return response()->json(['message' => 'Expenses Not Added', 'code' => 404], 404);
         }
     }
 

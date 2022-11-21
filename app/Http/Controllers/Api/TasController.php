@@ -43,7 +43,7 @@ class TasController extends Controller
     //get shipment status wise
     public function get_status(Request $request)
     {
-        $task = Task::with('shipment')->where('shipment_status', $request->shipment_status)->where('user_id', Auth()->id())->get();
+        $task = Task::with('shipment')->where('shipment_status', $request->shipment_status)->where('driver_id', Auth()->id())->get();
         if (count($task) > 0) {
             return $response['data'] = $task;
             return response($response, 200)->header('Content-Type', 'application/json');
@@ -55,7 +55,7 @@ class TasController extends Controller
 
     public function get_authtask()
     {
-        $task = Task::with('shipment')->where('user_id', Auth()->id())->get();
+        $task = Task::with('shipment')->where('driver_id', Auth()->id())->get();
         if (count($task) > 0) {
             return $response['data'] = $task;
             return response($response, 200)->header('Content-Type', 'application/json');
