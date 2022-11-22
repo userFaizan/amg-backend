@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\TaskController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +29,4 @@ Route::get('/driverlist',[AuthController::class,'index_driver'])->name('driver.d
 Route::get('/edit/{id}',[AuthController::class,'edit'])->name('driver.edit');
 Route::post('/update',[AuthController::class,'update'])->name('driver.update');
 Route::get('/delete/{id}',[AuthController::class,'destroy'])->name('driver.destroy');
+Route::get('/tasklist',[TaskController::class,'tasklist'])->name('tasklist');

@@ -10,17 +10,17 @@
              <div class="row align-items-center">
                  <div class="col-sm-6">
                      <div class="page-title">
-                         <h4>Driver Lists</h4>
+                         <h4>Task Lists</h4>
                              <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Driver</a></li>
                                  {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li> --}}
-                                 <li class="breadcrumb-item active">Driver Lists</li>
+                                 <li class="breadcrumb-item active">Task Lists</li>
                              </ol>
                      </div>
                  </div>
                  <div class="col-sm-6">
                     <div class="float-end d-none d-sm-block">
-                        <a href="{{ route('register-user') }}" class="btn btn-success">Add Driver</a>
+                        {{-- <a href="{{ route('register-user') }}" class="btn btn-success">Add Driver</a> --}}
                     </div>
                  </div>
              </div>
@@ -55,32 +55,60 @@
                                 <table id="myTable" class="table table-bordered dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                     <tr>
-                                        <th>Sr.No</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Id Number</th>
-                                        <th>Phone Number</th>
-                                        <th>Latitude</th>
-                                        <th>Longitude</th>
-                                        <th>License Expiry</th>
-                                        <th>Action</th>
+                                        <th>Sr No</th>
+                                        <th>Driver Name</th>
+                                        <th>Shipment_id</th>
+                                        <th>Refernece Id</th>
+                                        <th>Pickup Location</th>
+                                        <th>Dropoff Location</th>
+                                        <th>Delivery Date</th>
+                                        <th>Time</th>
+                                        <th>Contact Number</th>
+                                        <th>Total Distance</th>
+                                        <th>Total Weight</th>
+                                        <th>Vehicle Id</th>
+                                        <th>Vehicle Type</th>
+                                        <th>Dispatcher</th>
+                                        <th>Shipper</th>
+                                        <th>Total Cost</th>
+                                        <th>Payment Status</th>
+                                        <th>Shipment Status</th>
+                                        <th>Pickup Lat</th>
+                                        <th>Pickup Long</th>
+                                        <th>Dropoff Lat</th>
+                                        <th>Dropoff Long</th>
+                                        {{-- <th>Action</th> --}}
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($user as  $data)
+                                        @foreach ($task as  $data)
                                     <tr>
                                         <td>{{$data->id }}</td>
-                                        <td>{{$data->name }}</td>
-                                        <td>{{$data->email }}</td>
-                                        <td>{{$data->id_no}}</td>
-                                        <td>{{$data->phone_number  }}</td>
-                                        <td>{{$data->lat  }}</td>
-                                        <td>{{$data->lng  }}</td>
-                                        <td>{{$data->l_expiry  }}</td>
-                                        <td>
+                                        <td>{{$data->user->name ?? 'None' }}</td>
+                                        <td>{{$data->shipment_id }}</td>
+                                        <td>{{$data->refrence_id}}</td>
+                                        <td>{{$data->pickup_location  }}</td>
+                                        <td>{{$data->drop_off_location  }}</td>
+                                        <td>{{$data->dilivary_date  }}</td>
+                                        <td>{{$data->time  }}</td>
+                                        <td>{{$data->contact_number }}</td>
+                                        <td>{{$data->total_distance }}</td>
+                                        <td>{{$data->total_weight}}</td>
+                                        <td>{{$data->vehicle_id  }}</td>
+                                        <td>{{$data->vehicle_type  }}</td>
+                                        <td>{{$data->dispatcher  }}</td>
+                                        <td>{{$data->shipper  }}</td>
+                                        <td>{{$data->total_cost  }}</td>
+                                        <td>{{$data->payment_status }}</td>
+                                        <td>{{$data->shipment_status }}</td>
+                                        <td>{{$data->pickup_lat}}</td>
+                                        <td>{{$data->pickup_lng  }}</td>
+                                        <td>{{$data->drop_lat  }}</td>
+                                        <td>{{$data->drop_lng  }}</td>
+                                        {{-- <td>
                                          <a href="{{ route('driver.edit',$data->id)}}" type="button" class="btn btn-primary">Edit</a>
                                             <a href="{{ route('driver.destroy',$data->id) }}" type="button" class="btn btn-danger">Delete</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>   
                                     @endforeach                               
                                   </tbody>
@@ -588,7 +616,7 @@
     <!-- End Page-content -->
 
   
-{{--     
+    
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -602,6 +630,6 @@
                 </div>
             </div>
         </div>
-    </footer> --}}
+    </footer>
 </div>
 @endsection

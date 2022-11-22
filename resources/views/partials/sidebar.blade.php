@@ -59,17 +59,17 @@
                     </ul>
                 </li>
 
-                {{-- <li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="dripicons-mail"></i>
-                        <span>Email</span>
+                        <span>Task</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-read.html">Email Read</a></li>
-                        <li><a href="email-compose.html">Email Compose</a></li>
+                        <li><a href="{{ route('tasklist') }}">Task list</a></li>
+                        {{-- <li><a href="email-read.html">Email Read</a></li>
+                        <li><a href="email-compose.html">Email Compose</a></li> --}}
                     </ul>
-                </li> --}}
+                </li>
 {{-- 
                 <li class="menu-title">Components</li>
 
