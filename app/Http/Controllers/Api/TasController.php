@@ -102,4 +102,20 @@ class TasController extends Controller
             return response()->json(['message' => 'No record found to update against given id', 'code' => 404], 404);
         }
     }
+
+    public function change_task_status(Request $request)
+    {
+        $data = Task::findOrFail($request->id);
+        $data->change_task_status = $request->change_task_status;
+        $data->save();
+       
+         if($data){
+            return response()->json([
+                'message' => 'Task Status updated successfully ',
+                'code' => 200,
+            ]);
+        }else {
+            return response()->json(['message' => 'No record found to update against given id', 'code' => 404], 404);
+        }
+    }
 }

@@ -36,7 +36,8 @@ return new class extends Migration
             $table->double('pickup_lng');
             $table->double('drop_lat');
             $table->double('drop_lng');
-            $table->integer('shipment_status')->default('1');;
+            $table->integer('shipment_status')->default('1');
+            $table->integer('change_task_status')->default('0');
             $table->foreign('driver_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

@@ -54,7 +54,7 @@ Route::middleware(['auth:api'])->group(function(){
   Route::post('/allupdate',[TasController::class,'allupdate'])->name('allupdate');
   Route::post('/statusupdate',[TasController::class,'statusupdate'])->name('statusupdate');
   Route::get('/get_task_by_shipment',[TasController::class,'get_status'])->name('get_status');
-  
+  Route::post('/change_task_status',[TasController::class,'change_task_status'])->name('change_task_status');
 
   //shipments
   Route::get('/get_shipment_status',[ShipmentController::class,'get_shipment'])->name('get_shipment');
