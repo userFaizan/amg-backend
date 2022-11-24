@@ -47,9 +47,10 @@ class NoteController extends Controller
         }
     }
 
-    public function get_notes()
+    public function get_notes(Request $request)
     {
-        $expense = Note::with('images')->get();
+
+        $expense = Note::with('images')->where('task_id',$request->task_id)->get();
         if (count($expense) > 0) {
             return $response['data'] = $expense;
             return response($response, 200)->header('Content-Type', 'application/json');

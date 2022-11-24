@@ -53,9 +53,9 @@ class ExpenseController extends Controller
         }
     }
 
-    public function get_expense()
+    public function get_expense(Request $request)
     {
-        $expense = Expense::with('images')->get();
+        $expense = Expense::with('images')->where('task_id',$request->task_id)->get();
         if (count($expense) > 0) {
             return $response['data'] = $expense;
             return response($response, 200)->header('Content-Type', 'application/json');
