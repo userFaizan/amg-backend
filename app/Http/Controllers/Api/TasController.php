@@ -109,6 +109,11 @@ class TasController extends Controller
         $data->change_task_status = $request->change_task_status;
         $data->save();
        
+        if($request->change_task_status == 5)
+        {
+            Task::where('id',$request->id)->update(  ['shipment_status' => 3] );
+
+        }
          if($data){
             return response()->json([
                 'message' => 'Task Status updated successfully ',

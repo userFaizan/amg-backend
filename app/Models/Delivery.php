@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Delivery extends Model
 {
     protected $fillable = [
-        'description'
-        
-        
-      
+        'description',
+        'signature_img'  
     ];
 
     use HasFactory;

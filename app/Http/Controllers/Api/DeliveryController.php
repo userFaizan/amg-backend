@@ -8,6 +8,7 @@ use Validator;
 use Illuminate\Support\Facades\Log;
 use App\Models\Delivery;
 use App\Models\Delivery_Image;
+use Illuminate\Support\Facades\Storage;
 
 
 class DeliveryController extends Controller
@@ -17,13 +18,17 @@ class DeliveryController extends Controller
     public function store_delivery(Request $request)
     {
         $this->validate($request, [
-            'description' => 'required',
-            'files' => 'required'
+               'description' => 'required',
+               'signature_img'=> 'required',
+               'files' => 'required'
         ]);
         log::info($request);
-
-        $request['description'] = ucfirst($request->description);
-        $product = Delivery::create($request->except('files'));
+        $image= Storage::disk('public')->put('public/product/tasksign', $request->signature_img);
+        $product = Delivery::create([
+            $request->except('files'),
+            'description' => $request->description,
+            'signature_img' =>$image
+        ]);
         if ($request->hasFile('files')) {
             $files = $request->file('files');
             foreach ($files as $file) {
@@ -32,6 +37,8 @@ class DeliveryController extends Controller
                 Delivery_Image::create(['delivery_id' => $product->id, 'image' => str_replace("public/", "", $file_name)]);
             }
         }
+   
+
         if ($product) {
             return response()->json([
                 'message' => 'Delivery Added successfully',
