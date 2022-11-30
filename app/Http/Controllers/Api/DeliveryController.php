@@ -20,14 +20,16 @@ class DeliveryController extends Controller
         $this->validate($request, [
                'description' => 'required',
                'signature_img'=> 'required',
-               'files' => 'required'
+               'files' => 'required',
+               'task_id'=> 'required'
         ]);
         log::info($request);
         $image= Storage::disk('public')->put('public/product/tasksign', $request->signature_img);
         $product = Delivery::create([
             $request->except('files'),
             'description' => $request->description,
-            'signature_img' =>$image
+            'signature_img' =>$image,
+            'task_id' =>$request->task_id
         ]);
         if ($request->hasFile('files')) {
             $files = $request->file('files');

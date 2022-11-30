@@ -48,7 +48,9 @@ class Task extends Model
     public function note(){
         return $this->hasMany(Note::class,'task_id','id');
     }
-
+    public function delivery(){
+        return $this->hasMany(Delivery::class,'task_id','id');
+    }
     public function user(){
         return $this->belongsTo(User::class,'driver_id');
     }

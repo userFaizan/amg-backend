@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('delivery', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('task_id');
+            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->mediumText('description');
             $table->string('signature_img');
             $table->timestamps();

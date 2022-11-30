@@ -9,7 +9,8 @@ class Delivery extends Model
 {
     protected $fillable = [
         'description',
-        'signature_img'  
+        'signature_img',
+        'task_id'  
     ];
 
     use HasFactory;
@@ -17,5 +18,9 @@ class Delivery extends Model
 
     public function images(){
         return $this->hasMany(Delivery_Image::class,'delivery_id','id');
+    }
+    public function task()
+    {
+        return $this->belongsTo(Task::class,'task_id','id');
     }
 }
